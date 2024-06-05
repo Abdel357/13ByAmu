@@ -1,0 +1,184 @@
+<app-navbar></app-navbar>
+
+<div class="page-container">
+  <div class="filters">
+    <div class="search-container">
+      <input
+        type="text"
+        [(ngModel)]="searchKeyword"
+        placeholder="Tapez le nom d'un terrain"
+      />
+      <button class="search-button" (click)="filterTerrainsByName()">
+        Rechercher
+      </button>
+      <button class="reset-button" (click)="resetSearch()">
+        Réinitialiser
+      </button>
+    </div>
+    <br />
+    <div class="filter">
+      <div class="button-group">
+        <button
+          class="filter-button"
+          [class.active]="filterType === ''"
+          (click)="filterType = ''; filterTerrains()"
+        >
+          Tous les types
+        </button>
+        <button
+          class="filter-button"
+          [class.active]="filterType === 'Tennis'"
+          (click)="filterType = 'Tennis'; filterTerrains()"
+        >
+          Tennis
+        </button>
+        <button
+          class="filter-button"
+          [class.active]="filterType === 'Football'"
+          (click)="filterType = 'Football'; filterTerrains()"
+        >
+          Football
+        </button>
+        <button
+          class="filter-button"
+          [class.active]="filterType === 'Basketball'"
+          (click)="filterType = 'Basketball'; filterTerrains()"
+        >
+          Basketball
+        </button>
+        <button
+          class="filter-button"
+          [class.active]="filterType === 'Volleyball'"
+          (click)="filterType = 'Volleyball'; filterTerrains()"
+        >
+          Volleyball
+        </button>
+      </div>
+    </div>
+    <div class="filter">
+      <div class="button-group">
+        <button
+          class="filter-button"
+          [class.active]="filterLocation === ''"
+          (click)="filterLocation = ''; filterTerrains()"
+        >
+          Toutes les communes
+        </button>
+        <button
+          class="filter-button"
+          [class.active]="filterLocation === 'Marseille'"
+          (click)="filterLocation = 'Marseille'; filterTerrains()"
+        >
+          Marseille
+        </button>
+        <button
+          class="filter-button"
+          [class.active]="filterLocation === 'Aix en provence'"
+          (click)="filterLocation = 'Aix en provence'; filterTerrains()"
+        >
+          Aix en provence
+        </button>
+        <button
+          class="filter-button"
+          [class.active]="filterLocation === 'Gardanne'"
+          (click)="filterLocation = 'Gardanne'; filterTerrains()"
+        >
+          Gardanne
+        </button>
+        <button
+          class="filter-button"
+          [class.active]="filterLocation === 'Aubagne'"
+          (click)="filterLocation = 'Aubagne'; filterTerrains()"
+        >
+          Aubagne
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="terrain-list">
+    <div *ngFor="let item of filteredTerrains" class="terrain">
+      <div class="terrain-details">
+        <div class="terrain-image">
+          <img
+            src="../../assets/Terrains/{{ item.idTerrain }}.jpg"
+            alt="{{ item.nameTerrain }}"
+          />
+          <div class="location-box">
+            <p class="location">
+              <i class="bx bx-current-location"></i>
+              {{ item.locationTerrain }}
+            </p>
+          </div>
+        </div>
+        <br />
+        <br />
+
+        <h3 class="terrain-name">{{ item.nameTerrain }}</h3>
+        <br />
+        <div class="buttons">
+          <button
+            class="address-button"
+            (click)="navigateToGoogleMaps(item.positionTerrain)"
+          >
+            Adresse
+          </button>
+          <button
+            class="address-button"
+            (click)="navigateToEvaluation(item.idTerrain)"
+          >
+            Évaluer
+          </button>
+          <button
+            class="address-button"
+            (click)="showPopupWindow(item.contents)"
+          >
+            Avis
+          </button>
+
+          <button
+            class="full-width-button"
+            (click)="navigateToDetails(item.idTerrain)"
+          >
+            Réserver
+          </button>
+        </div>
+        <p class="rating-tag">
+          <b class="rating-value"> {{ getFormattedRating(item) }}/5</b> &nbsp;
+          <ngb-rating
+            [max]="5"
+            [rate]="parseNumber(getFormattedRating(item))"
+            [readonly]="true"
+          ></ngb-rating>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()"></div>
+<div *ngIf="showPopup" class="popup-window">
+  <button class="close-button" (click)="showPopup = false">X</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Contenu</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let content of popupContent">
+        <td>{{ content.firstName }} {{ content.lastName }}</td>
+        <td>{{ content.content }}</td>
+        <td>{{ content.formattedDate.split("||")[0] }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="emptyMessage" *ngIf="popupContent.length === 0">
+    Il n'y a pas d'avis sur ce terrain.
+  </p>
+</div>

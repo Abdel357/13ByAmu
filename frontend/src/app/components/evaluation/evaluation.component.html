@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<div class="evaluation-container">
+  <div class="evaluation-card">
+    <div class="form-container">
+      <h2>ÉVALUER LE TERRAIN</h2>
+      <br />
+      <form [formGroup]="evaluationForm" (submit)="submit()">
+        <ngb-rating [max]="5" formControlName="stars"></ngb-rating>
+
+        <br />
+        <div>
+          <br />
+          <textarea
+            type="text"
+            id="message"
+            name="message"
+            formControlName="message"
+            placeholder="Ajouter un commentaire"
+          ></textarea>
+        </div>
+        <br /><br />
+        <button type="submit"><b> ENVOYER</b></button>
+      </form>
+    </div>
+  </div>
+</div>

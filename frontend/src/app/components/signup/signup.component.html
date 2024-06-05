@@ -1,0 +1,65 @@
+<div class="boxx">
+  <span routerLink="/accueil"><b>RETOURNEZ À LA PAGE D'ACCUEIL</b></span>
+  <div class="containerr" id="container">
+    <div class="form-containerr sign-up-container">
+      <form method="POST" [formGroup]="signupForm" (submit)="submit()">
+        <h2>S'INSCRIRE</h2>
+        <br />
+        <br />
+        <input
+          class="input-form"
+          type="text"
+          placeholder="Prénom"
+          formControlName="firstName"
+        />
+        <input
+          class="input-form"
+          type="text"
+          placeholder="Nom de famille"
+          formControlName="lastName"
+        />
+        <input
+          class="input-form"
+          type="email"
+          placeholder="E-mail"
+          formControlName="email"
+        />
+        <input
+          class="input-form"
+          type="password"
+          placeholder="Mot de passe"
+          formControlName="password"
+        />
+        <input
+          class="input-form"
+          type="password"
+          placeholder="Confirmez le mot de passe"
+          formControlName="passwordConfirm"
+        />
+
+        <br />
+        <br />
+        <div class="group">
+          <input id="check" type="checkbox" unchecked formControlName="terms" />
+          &nbsp;
+          <label for="check"
+            ><span class="icon"></span> J'accepte les termes et
+            conditions</label
+          >
+        </div>
+
+        <br />
+        <button>S'INSCRIRE</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Avez vous déjà un compte ?</h1>
+          <p>Connectez-vous en cliquant sur ce bouton</p>
+          <button routerLink="/log">Connexion</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

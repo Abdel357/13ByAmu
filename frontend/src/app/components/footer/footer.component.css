@@ -1,0 +1,78 @@
+@import "~boxicons/css/boxicons.min.css";
+
+footer {
+  background-color: #bff2f2;
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-content {
+  flex: 1;
+  color: #000000; /* Couleur du texte */
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+.left-content p {
+  margin-bottom: 25px;
+}
+
+.left-content a {
+  color: #fff;
+  background-color: #00cccc; /* Couleur de fond du bouton */
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.right-content {
+  flex: 1;
+  text-align: right;
+  color: #000000; /* Couleur du texte */
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+.right-content p {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 40px;
+  margin-left: 430px;
+  margin-top: 35px;
+}
+
+.social-icons a {
+  color: #00cccc;
+}
+
+.logo {
+  flex: 1;
+  text-align: center;
+}
+.logo img {
+  width: 250px; /* Définissez la largeur souhaitée */
+  height: auto; /* Laissez la hauteur s'ajuster automatiquement pour maintenir les proportions */
+}
+
+nav {
+  text-align: center;
+  margin-top: 10px;
+  color: #000000; /* Couleur du texte */
+}
+
+nav a {
+  color: #000000;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}

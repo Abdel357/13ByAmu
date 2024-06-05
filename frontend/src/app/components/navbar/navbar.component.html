@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <a href="/" class="logo-link">
+      <img src="../../assets/logo-no-background.png" alt="LOGO" class="logo" />
+    </a>
+  </div>
+  <div class="navbar-middle">
+    <a href="#" class="navbar-option" routerLink="/accueil">Accueil</a>
+    <a
+      href="#"
+      class="navbar-option"
+      routerLink="/mesreservations"
+      *ngIf="isLoggedIn"
+      >Mes Reservations</a
+    >
+    <a href="#" class="navbar-option" routerLink="/terrains">Terrains</a>
+    <a href="#" class="navbar-option" routerLink="/forum" *ngIf="isLoggedIn"
+      >Forum</a
+    >
+    <a href="#" class="navbar-option" routerLink="/contact">Contactez-nous</a>
+  </div>
+  <div class="navbar-right">
+    <button routerLink="/log" *ngIf="!isLoggedIn">
+      <b>Mon Compte</b>
+    </button>
+
+    <button routerLink="/profile" *ngIf="isLoggedIn">
+      <b>Mon Profile</b>
+    </button>
+
+    <button
+      title="Log Out"
+      (click)="logout()"
+      *ngIf="isLoggedIn"
+      class="logout"
+    >
+      <a href="#" class="logout" (click)="logout()"
+        ><i class="bx bx-log-in"></i
+      ></a>
+    </button>
+  </div>
+</nav>

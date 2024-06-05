@@ -1,0 +1,42 @@
+<div class="boxx">
+  <form
+    class="email-form"
+    method="POST"
+    [formGroup]="afterResetForm"
+    (submit)="submit()"
+  >
+    <div class="reset-password-heading-bar">
+      <h2 class="reset-password-heading">Réinitialisez votre mot de passe</h2>
+    </div>
+    <br />
+    <div class="reset-password-content">
+      <div>
+        <input
+          type="password"
+          class="reset-password-input"
+          id="newpass"
+          name="newpass"
+          placeholder="Entrez votre nouveau mot de passe"
+          formControlName="newPassword"
+          autofocus
+        />
+      </div>
+      <br />
+      <div>
+        <input
+          type="password"
+          class="reset-password-input"
+          id="newpassconfirm"
+          name="newpassconfirm"
+          placeholder="Confirmez votre nouveau mot de passe"
+          formControlName="newPasswordConfirm"
+          autofocus
+        />
+      </div>
+    </div>
+
+    <div class="reset-password-actions">
+      <button type="submit" class="reset-password-submit">Valider</button>
+    </div>
+  </form>
+</div>

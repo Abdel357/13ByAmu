@@ -1,0 +1,55 @@
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  color: #00a3a3;
+}
+
+.form-container select,
+.form-container input[type="text"],
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-container button {
+  background-color: #00cccc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.evaluation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.evaluation-card {
+  background: #00cccc;
+  background: -webkit-linear-gradient(to right, #c4fcfc, #fcffff);
+  background: linear-gradient(to right, #b3ffff, #cbefea);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+ngb-rating {
+  color: #00cccc;
+  font-size: 40px;
+}

@@ -1,0 +1,91 @@
+.reservation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 10%);
+  margin-top: 5%;
+  box-sizing: border-box;
+  margin-bottom: 10%;
+}
+
+.reservation-card {
+  background: #00cccc;
+  background: -webkit-linear-gradient(to right, #97eaea, #d5f6f6);
+  background: linear-gradient(to right, #97eaea, #d5f6f6);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  text-align: center;
+  color: #19a7a7;
+}
+
+.terrain-info {
+  display: grid;
+  grid-template-columns: 0.4fr 0.4fr;
+  color: #00cccc;
+}
+.terrain-info p {
+  margin: 1;
+}
+strong {
+  color: #19a7a7;
+}
+label {
+  color: #19a7a7;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #00cccc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.line strong {
+  margin-right: 5px;
+  white-space: pre;
+}
+
+.reservation-form button {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.button-container {
+  text-align: center;
+}
+.button-container button {
+  width: 40%;
+}

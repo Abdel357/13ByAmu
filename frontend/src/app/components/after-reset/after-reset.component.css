@@ -1,0 +1,71 @@
+.boxx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.email-form {
+  background: #00cccc;
+  background: -webkit-linear-gradient(to right, #97eaea, #d5f6f6);
+  background: linear-gradient(to right, #97eaea, #d5f6f6);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 400px;
+  text-align: center;
+}
+
+.reset-password-heading-bar {
+  background-color: #00cccc;
+  height: 50px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset-password-heading {
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.reset-password-content {
+  margin-bottom: 30px;
+}
+
+.reset-password-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.reset-password-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.reset-password-submit {
+  background-color: #00cccc;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-password-submit:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

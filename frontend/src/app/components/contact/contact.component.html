@@ -1,0 +1,98 @@
+<app-navbar></app-navbar>
+
+<div class="content">
+  <h1 class="title">Contactez-nous</h1>
+  <div class="row">
+    <div class="col">
+      <div class="icon">
+        <img src="../../assets/call.png" alt="Icône de téléphone" />
+      </div>
+      <p class="desc">
+        <small>(du lundi au vendredi, de 9h à 18h)</small><br />
+        <br />
+        Contactez l'un de nos agents en composant ce numéro :<br />
+        <br />
+        +33 762820382<br />
+      </p>
+    </div>
+    <div class="col-bigger">
+      <div class="icon">
+        <img src="../../assets/letter.png" alt="Icône d'email" />
+      </div>
+      <p class="desc">Envoyez-nous un email en remplissant le formulaire :</p>
+      <br />
+      <button
+        class="click"
+        onclick="document.getElementById('id03').style.display='block'"
+      >
+        <b>Cliquez ici</b>
+      </button>
+    </div>
+    <div class="col">
+      <div class="icon">
+        <img src="../../assets/location.png" alt="Icône de chat en direct" />
+      </div>
+      <p class="desc">
+        Rendez-nous visite :<br />
+        <br />
+        163 Avenue XYZ<br />
+        Case 901<br />
+        13000 Marseille<br />
+      </p>
+    </div>
+  </div>
+</div>
+<div id="id03" class="modall">
+  <form
+    class="modal-content animate"
+    [formGroup]="contactForm"
+    (submit)="submit()"
+  >
+    <div class="container">
+      <div class="container-header">
+        <h2 class="form-text">
+          Remplissez ce formulaire et nous vous répondrons dans les plus brefs
+          délais :
+        </h2>
+      </div>
+      <br />
+      <br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="name"
+        placeholder="Entrez votre nom complet"
+      /><br /><br />
+      <input
+        type="text"
+        id="email"
+        name="email"
+        formControlName="email"
+        placeholder="Entrez votre adresse e-mail"
+      /><br /><br />
+
+      <textarea
+        id="message"
+        name="message"
+        formControlName="message"
+        placeholder="Entrez votre message"
+      ></textarea
+      ><br /><br />
+      <button type="submit" class="submitbtn"><b>Envoyer</b></button>
+      <br />
+      <br />
+
+      <button
+        type="button"
+        onclick="document.getElementById('id03').style.display='none'"
+        class="cancelbtn"
+      >
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>
+
+<br /><br /><br /><br /><br />
+<app-footer></app-footer>

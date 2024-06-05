@@ -1,0 +1,104 @@
+@import "~boxicons/css/boxicons.min.css";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  height: 80px;
+  padding: 0 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+  flex: 1;
+}
+
+.navbar-name {
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+}
+
+.navbar-middle {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-option {
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  position: relative;
+}
+
+.navbar-option:hover::before,
+.navbar-option:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  height: 2px;
+  background-color: #000000;
+  width: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar-option:hover::before {
+  left: 50%;
+}
+
+.navbar-option:hover::after {
+  right: 50%;
+}
+
+.navbar-option:hover::before {
+  width: 50%;
+}
+
+.navbar-option:hover::after {
+  width: 50%;
+}
+
+.navbar-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00cccc;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  border: none;
+}
+
+button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.logo {
+  width: 180px; /* Définissez la largeur souhaitée */
+  height: auto; /* Conservez le ratio d'aspect d'origine */
+}
+
+button.logout {
+  background-color: white;
+}
+
+button.logout i {
+  color: #00cccc;
+}

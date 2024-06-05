@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<div class="payment-container">
+  <form
+    action="/payment/:idReservation"
+    method="post"
+    [formGroup]="paymentForm"
+    (submit)="submitPayment()"
+    class="payment-form"
+  >
+    <div class="form-group">
+      <label for="card-holder">Nom complet</label>
+      <div class="input-container">
+        <input
+          type="text"
+          id="card-holder"
+          (input)="restrictToAlphabets($event)"
+          name="cardHolder"
+          formControlName="holderName"
+          required
+        />
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="card-number">Numéro de carte</label>
+      <div class="input-container">
+        <input
+          type="text"
+          id="card-number"
+          name="cardNumber"
+          (input)="restrictToNumbers($event)"
+          maxlength="16"
+          formControlName="cardNumber"
+          required
+        />
+        <i class="fas fa-credit-card"></i>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exp-date">Date d'expiration</label>
+      <div class="input-container">
+        <input
+          type="text"
+          id="exp-month"
+          name="expMonth"
+          placeholder="MM"
+          (input)="restrictToNumbers($event)"
+          maxlength="2"
+          formControlName="expMonth"
+          required
+        />
+        <span> </span>
+        <input
+          type="text"
+          id="exp-year"
+          name="expYear"
+          placeholder="YYYY"
+          (input)="restrictToNumbers($event)"
+          maxlength="4"
+          formControlName="expYear"
+          required
+        />
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cvv">CVV</label>
+      <div class="input-container">
+        <input
+          type="text"
+          id="cvv"
+          name="cvv"
+          (input)="restrictToNumbers($event)"
+          formControlName="cvv"
+          maxlength="4"
+          required
+        />
+        <i class="fas fa-lock"></i>
+      </div>
+    </div>
+    <button type="submit" routerLink="/reservation">Annuler</button>
+    <button type="button" (click)="showConfirmationPopup()">
+      Soumettre le paiement
+    </button>
+  </form>
+</div>
+
+<div class="overlay" *ngIf="showPopup">
+  <div class="popup">
+    <p>Êtes-vous sûr de vouloir procéder au paiement ?</p>
+    <br />
+    <div class="button-container">
+      <button (click)="submitPayment()">Oui</button>
+      <button (click)="hideConfirmationPopup()">Retour</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+<app-navbar></app-navbar>
+
+<div class="page-container">
+  <div class="sidebar">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="content">
+    <div class="form-box">
+      <form [formGroup]="profileForm" (submit)="submit()">
+        <div class="image-container" *ngIf="profileForm.get('photo')?.value">
+          <img
+            *ngIf="!selectedFile"
+            [src]="'../../../assets/PDP/' + profileForm.get('photo')?.value"
+          />
+          <img *ngIf="selectedFile" [src]="getSelectedImage()" />
+
+          <div class="cam">
+            <input
+              type="file"
+              id="image-input"
+              accept="image/*"
+              (change)="onFileSelected($event)"
+            />
+            <label for="image-input">
+              <i class="fas fa-camera"></i>
+            </label>
+          </div>
+        </div>
+
+        <div *ngIf="!profileForm.get('photo')?.value">
+          <div *ngIf="selectedFile">
+            <img
+              [src]="selectedFile ? previewImage : null"
+              alt="Selected Image"
+            />
+          </div>
+
+          <div *ngIf="!selectedFile">
+            <div class="image-upload">
+              <input
+                type="file"
+                id="image-input"
+                accept="image/*"
+                (change)="onFileSelected($event)"
+              />
+
+              <label for="image-input">
+                <div class="circle">
+                  <i class="fas fa-camera"></i>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <br />
+        <h2>
+          {{ profileForm.get("firstName")?.value }}
+          {{ profileForm.get("lastName")?.value }}
+        </h2>
+
+        <div class="form-content">
+          <br />
+          <br />
+
+          <label>Adresse :</label>
+          <input
+            type="text"
+            id="address"
+            placeholder="ex : 1 rue Mazenod 13002 Marseille"
+            formControlName="address"
+          />
+          <br />
+          <label>Téléphone :</label>
+          <input
+            type="tel"
+            id="phone"
+            (input)="restrictToNumbers($event)"
+            placeholder="ex : 07 51 72 99 10"
+            maxlength="10"
+            formControlName="phoneNumber"
+          />
+          <br />
+          <label>Niveau :</label>
+          <select name="level" formControlName="level">
+            <option value="" disabled selected>
+              Choisissez votre niveau :
+            </option>
+            <option value="beginner">Débutant</option>
+            <option value="intermediate">Intermédiaire</option>
+            <option value="advanced">Confirmé</option>
+          </select>
+          <br />
+          <label>Préférences sportives :</label>
+          <select id="sport" name="sport" formControlName="sport">
+            <option value="" disabled selected>
+              Choisissez votre préférence sportive :
+            </option>
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+            <option value="volleyball" selected>Volleyball</option>
+            <option value="petanque">Pétanque</option>
+          </select>
+          <br />
+          <label>Sexe :</label>
+          <select id="gender" name="gender" formControlName="gender">
+            <option value="" disabled selected>Choisissez votre sexe :</option>
+            <option value="male">Homme</option>
+            <option value="female">Femme</option>
+            <option value="other">Autre</option>
+          </select>
+          <br />
+          <br />
+          <button type="submit">Sauvegarder</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

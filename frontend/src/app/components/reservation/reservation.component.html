@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+
+<div class="reservation-container">
+  <div class="reservation-card">
+    <h2 class="title">Nouvelle Réservation</h2>
+    <br />
+    <br />
+    <div class="terrain-info">
+      <div>
+        <p><strong>Nom de terrain :</strong></p>
+        <p><strong>Prix :</strong></p>
+        <p><strong>Commune :</strong></p>
+      </div>
+      <div>
+        <p>{{ terrainName[0].nameTerrain }}</p>
+        <p>{{ terrainName[0].price }} euro</p>
+        <p>{{ terrainName[0].location }}</p>
+      </div>
+    </div>
+    <br />
+    <form
+      class="reservation-form"
+      method="POST"
+      [formGroup]="reservationForm"
+      (submit)="submitReservation()"
+    >
+      <div class="form-group">
+        <label for="date">Date :</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          formControlName="date"
+          required
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="start-time">Heure de début :</label>
+        <input
+          type="time"
+          id="start-time"
+          name="start"
+          formControlName="startTime"
+          required
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="end-time">Heure de fin :</label>
+        <input
+          type="time"
+          id="end-time"
+          name="end"
+          formControlName="endTime"
+          required
+        />
+      </div>
+      <br />
+      <div class="button-container">
+        <button type="submit" routerLink="/terrains">REVENIR</button>
+        <button type="submit">RÉSERVER</button>
+      </div>
+    </form>
+  </div>
+</div>

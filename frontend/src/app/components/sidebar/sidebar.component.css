@@ -1,0 +1,62 @@
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+
+.menu {
+  position: relative;
+  left: 0;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: #d5f6f6;
+}
+.menu li a {
+  display: block;
+  text-indent: -500em;
+  line-height: 5em;
+  text-align: center;
+  color: #00cccc;
+  background: #d5f6f6;
+  position: relative;
+  border-bottom: 1px solid #ffe2e3;
+  transition: background 0.3s ease-in-out;
+}
+.menu li a:before {
+  font-family: FontAwesome;
+  text-indent: 0em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.4em;
+}
+
+.menu li a.dash:before {
+  content: "\f007";
+}
+
+.menu li a.change:before {
+  content: "\f040";
+}
+
+.menu li a.dash.profile-page:before {
+  background: #00cccc;
+  color: #fff;
+}
+
+.menu li a.change.profile-page:before {
+  background: #00cccc;
+  color: #fff;
+}
+
+.menu li a.logout:before {
+  content: "\f2f5";
+}
+.menu li a:hover {
+  background: #00cccc;
+  color: #fff;
+}
+.menu li.current a {
+  background: #00cccc;
+  color: #fff;
+}

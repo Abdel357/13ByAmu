@@ -1,0 +1,21 @@
+<ul class="menu">
+  <li title="Dashboard">
+    <a
+      href="#"
+      [ngClass]="{ dash: true, 'profile-page': isProfilePage }"
+      routerLink="/profile"
+      >Dashboard</a
+    >
+  </li>
+  <li title="Change Password">
+    <a
+      href="#"
+      [ngClass]="{ change: true, 'profile-page': !isProfilePage }"
+      routerLink="/changePassword"
+      >Change Password</a
+    >
+  </li>
+  <li title="Log Out" (click)="logout()">
+    <a href="#" class="logout" (click)="logout()">Log Out</a>
+  </li>
+</ul>

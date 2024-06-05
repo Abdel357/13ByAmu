@@ -1,0 +1,51 @@
+<div class="box">
+  <span routerLink="/accueil"><b>RETOURNEZ À LA PAGE D'ACCUEIL</b></span>
+  <div class="container" id="container">
+    <div class="form-container log-in-container">
+      <form method="POST" [formGroup]="connectionForm" (submit)="submit()">
+        <h1>Connexion</h1>
+        <br />
+        <br />
+        <input
+          type="email"
+          placeholder="Adresse e-mail"
+          formControlName="email"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          formControlName="password"
+          required
+        />
+        <a routerLink="/resetPassword">Mot de passe oublié ?</a>
+        <button type="submit">SE CONNECTER</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Vous n'avez pas de compte ?</h1>
+          <p>Créez-en un dès maintenant en cliquant sur ce bouton</p>
+          <button routerLink="/signup">S'INSCRIRE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+
+  <form [formGroup]="connectionForm" (submit)="submit()">
+  <div>
+    <label>Email:</label>
+    <input type="email" formControlName="email" required />
+  </div>
+  <div>
+    <label>Password:</label>
+    <input type="password" formControlName="password" required />
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
+-->

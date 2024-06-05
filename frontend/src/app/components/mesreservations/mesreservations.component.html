@@ -1,0 +1,105 @@
+<app-navbar></app-navbar> <br /><br />
+
+<div class="select-container">
+  <select class="select-style" [(ngModel)]="selectedFilter">
+    <option value="all">Toutes les réservations</option>
+    <option value="valide">Réservations valides</option>
+    <option value="annule">Réservations annulées</option>
+    <option value="passe">Réservations passées</option>
+  </select>
+</div>
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom du terrain</th>
+      <th>Date</th>
+      <th>Heure de début</th>
+      <th>Heure de fin</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Valid Reservations -->
+    <ng-container *ngFor="let reservation of filteredReservations()">
+      <ng-container
+        *ngIf="selectedFilter === 'all' || selectedFilter === 'valide'"
+      >
+        <tr
+          class="roww"
+          *ngIf="
+            reservation[0].isCanceled === 0 &&
+            !isReservationExpired(
+              reservation[0].dateReservation,
+              reservation[0].startTime
+            )
+          "
+        >
+          <td>{{ reservation[0].nameTerrain }}</td>
+          <td>{{ reservation[0].dateReservation | date : "dd-MM-yyyy" }}</td>
+          <td>{{ reservation[0].startTime }}</td>
+          <td>{{ reservation[0].endTime }}</td>
+          <td>
+            <button
+              class="cancel-button"
+              (click)="cancelReservation(reservation[0].idReservation)"
+            >
+              Annuler
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+
+    <!-- Passed Reservations -->
+    <ng-container *ngFor="let reservation of filteredReservations()">
+      <ng-container
+        *ngIf="selectedFilter === 'all' || selectedFilter === 'passe'"
+      >
+        <tr
+          class="roww"
+          *ngIf="
+            isReservationExpired(
+              reservation[0].dateReservation,
+              reservation[0].startTime
+            )
+          "
+        >
+          <td>{{ reservation[0].nameTerrain }}</td>
+          <td>{{ reservation[0].dateReservation | date : "dd-MM-yyyy" }}</td>
+          <td>{{ reservation[0].startTime }}</td>
+          <td>{{ reservation[0].endTime }}</td>
+          <td><span class="cancelled-reservation">Passé</span></td>
+        </tr>
+      </ng-container>
+    </ng-container>
+
+    <!-- Canceled Reservations -->
+    <ng-container *ngFor="let reservation of filteredReservations()">
+      <ng-container
+        *ngIf="selectedFilter === 'all' || selectedFilter === 'annule'"
+      >
+        <tr
+          class="canceled-reservation"
+          *ngIf="reservation[0].isCanceled === 1"
+        >
+          <td>{{ reservation[0].nameTerrain }}</td>
+          <td>{{ reservation[0].dateReservation | date : "dd-MM-yyyy" }}</td>
+          <td>{{ reservation[0].startTime }}</td>
+          <td>{{ reservation[0].endTime }}</td>
+          <td>
+            <span class="cancelled-reservation">Annulé</span>
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+
+    <tr *ngIf="filteredReservations().length === 0">
+      <td colspan="5" style="text-align: center">
+        vous n'avez pas de réservation faites une réservation maintenant en
+        cliquant <a routerLink="/terrains">ici</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,198 @@
+<app-navbar></app-navbar> <br /><br />
+<div class="container">
+  <div class="left-column">
+    <button class="add-publication" (click)="showForm = true">
+      <i class="bx bx-plus-medical"></i> AJOUTER UNE PUBLICATION
+    </button>
+    <br />
+    <br />
+    <div class="filters">
+      <select (change)="filterByType($event)">
+        <option value="" disabled selected>Sélectionner une option</option>
+        <option value="">Toutes les publications</option>
+        <option value="my">Mes publications</option>
+      </select>
+      <br />
+
+      <select (change)="filterByDate($event)">
+        <option value="" disabled selected>Sélectionner la date</option>
+        <option value="all">Toutes les publications</option>
+        <option value="week">Cette semaine</option>
+        <option value="month">Ce mois-ci</option>
+        <option value="year">Cette année</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- affichage des publications -->
+  <div class="right-column">
+    <div class="publications">
+      <ng-container *ngIf="publications.length > 0; else noPublicationMessage">
+        <div
+          class="publication"
+          *ngFor="let publication of filteredPublications.reverse()"
+          (click)="openPopup(publication)"
+        >
+          <div class="user-info">
+            <div class="user-photo">
+              <ng-container *ngIf="publication.photo">
+                <img [src]="'../../../assets/PDP/' + publication.photo" />
+              </ng-container>
+            </div>
+            <div class="user-details">
+              <span class="user-name"
+                >{{ publication.firstName }} {{ publication.lastName }}</span
+              >
+              <span class="publication-date">{{
+                publication.datePublication | date : "dd-MM-yyyy"
+              }}</span>
+            </div>
+          </div>
+          <h2 class="publication-title">
+            <b>{{ publication.titre }}</b>
+          </h2>
+        </div>
+      </ng-container>
+      <ng-template #noPublicationMessage>
+        <div class="no-publication-message">
+          Aucune publication à afficher, soyez le premier à écrire une
+          publication!
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- affichage d'une publication -->
+
+    <div
+      class="overlay"
+      *ngIf="selectedPublication"
+      (click)="closePopup()"
+    ></div>
+
+    <div class="popup" *ngIf="selectedPublication">
+      <div class="popup-content">
+        <span class="close" (click)="closePopup()">&times;</span>
+        <h1>{{ selectedPublication.titre }}</h1>
+
+        <div class="user-info smaller">
+          <div class="user-photo">
+            <ng-container *ngIf="selectedPublication.photo">
+              <img [src]="'../../../assets/PDP/' + selectedPublication.photo" />
+            </ng-container>
+          </div>
+          <span class="user-name smaller-text"
+            >{{ selectedPublication?.firstName }}
+            {{ selectedPublication?.lastName }}</span
+          >
+          &nbsp; &nbsp; &nbsp;
+          <span class="time-elapsed smaller-text">
+            {{ getTimeElapsed(selectedPublication?.datePublication) }}</span
+          >
+        </div>
+        <br />
+        <br />
+        <p>{{ selectedPublication.content }}</p>
+        <br />
+        <br />
+        <br />
+
+        <form
+          (submit)="submitComment(selectedPublication.idPublication)"
+          [formGroup]="commentForm"
+        >
+          <label for="comment">Ajouter un commentaire :</label>
+          <textarea
+            id="comment"
+            name="comment"
+            formControlName="comment"
+            placeholder="Ex : That's amazing ..."
+          ></textarea>
+
+          <div class="buttons">
+            <button type="submit"><b>Commenter</b></button>
+          </div>
+        </form>
+        <br />
+        <br />
+        <h3>Commentaires :</h3>
+        <br />
+        <ng-container *ngIf="comments.length === 0 || !hasMatchingComments()">
+          <p>Aucun commentaire pour l'instant</p>
+        </ng-container>
+
+        <div *ngFor="let comment of comments" class="comment-container">
+          <i
+            *ngIf="comment.idPublication === selectedPublication.idPublication"
+            class="bx bxs-arrow-from-left"
+          ></i>
+          <div
+            *ngIf="comment.idPublication === selectedPublication.idPublication"
+            class="comment-box"
+          >
+            <p
+              *ngIf="
+                comment.idPublication === selectedPublication.idPublication
+              "
+            >
+              <span *ngIf="getUserById(comment.idUser)">
+                <div class="user-info smaller">
+                  <div class="user-photo">
+                    <ng-container *ngIf="getUserById(comment.idUser).photo">
+                      <img
+                        [src]="
+                          '../../../assets/PDP/' +
+                          getUserById(comment.idUser).photo
+                        "
+                      />
+                    </ng-container>
+                  </div>
+                  <span class="user-name smaller-text"
+                    >{{ getUserById(comment.idUser).firstName }}
+                    {{ getUserById(comment.idUser).lastName }}</span
+                  >
+                  &nbsp; &nbsp; &nbsp;
+                  <span class="time-elapsed smaller-text">
+                    {{ getTimeElapsed(comment.dateComment) }}</span
+                  >
+                </div>
+              </span>
+              <br />
+              {{ comment.content }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- form ajout publication -->
+
+    <div class="overlayy" *ngIf="showForm">
+      <div class="popup-contentt animate">
+        <form (submit)="submit()" [formGroup]="publicationForm">
+          <label for="title">Titre :</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            formControlName="title"
+            placeholder="Entrez le titre"
+          />
+          <br />
+          <br />
+          <label for="publication">Publication :</label>
+          <textarea
+            id="publication"
+            name="publication"
+            formControlName="publication"
+            placeholder="Entrez la publication"
+          ></textarea>
+
+          <div class="buttons">
+            <button type="button" (click)="cancelForm()">Annuler</button>
+            <button type="submit">Envoyer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
