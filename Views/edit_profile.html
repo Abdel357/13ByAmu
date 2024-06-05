@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <h1>Edit Profile</h1>
+    <form action="/edit_profile" method="POST">
+      <label for="address">Address:</label>
+      <input placeholder="address" type="text" name="address" /><br />
+
+      <label for="phone">Phone:</label>
+      <input type="tel" placeholder="phone number" name="phoneNumber" /><br />
+
+      <label for="niveau">Niveau:</label>
+      <select name="level">
+        <option value="beginner">Débutant</option>
+        <option value="intermediate">Intermédiaire</option>
+        <option value="advanced">Confirmé</option>
+      </select>
+      <br />
+
+      <label for="sport">Préférences sportives :</label>
+      <select id="sport" name="sport">
+        <option value="football">Football</option>
+        <option value="basketball">Basketball</option>
+        <option value="volleyball">Volleyball</option>
+        <option value="petanque">Pétanque</option></select
+      ><br />
+
+      <label for="profile_picture">Profile Picture:</label>
+      <input type="file" id="profile_picture" name="profile_picture" /><br />
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <input type="submit" value="Save Changes" />
+    </form>
+  </body>
+</html>

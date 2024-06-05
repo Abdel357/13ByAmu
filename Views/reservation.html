@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Réservation des terrains</title>
+  
+  <!-- <script>
+    function reserverTerrain(idTerrain) {
+      // Effectuez les opérations nécessaires pour réserver le terrain avec l'ID correspondant
+      // Vous pouvez utiliser une requête AJAX pour envoyer la demande de réservation au serveur
+      // ou rediriger l'utilisateur vers une autre page pour finaliser la réservation
+      console.log("Terrain réservé avec l'ID :", idTerrain);
+    }
+  </script> -->
+</head>
+<body>
+  <h1>Réservation des terrains</h1>
+  <div class="terrains">
+    {{#terrains}}
+    <div class="terrain">
+      <img src="{{poster}}" alt="{{nameTerrain}}">
+      <h2>{{nameTerrain}}</h2>
+      <p>Location: {{location}}</p>
+      <a href="{{position}}" target="_blank">Voir la position</a>
+      
+      <button onclick="window.location.href='/reservation/{{idTerrain}}'">Réserver</button>
+
+    </div>
+    {{/terrains}}
+  </div>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.terrains {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.terrain {
+  text-align: center;
+}
+
+.terrain img {
+  width: 300px;
+  height: auto;
+}
+
+.terrain h2 {
+  margin-top: 10px;
+}
+
+.terrain a {
+  display: block;
+  margin-top: 10px;
+}
+
+  </style>
+</body>
+</html>

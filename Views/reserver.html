@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Réserver le terrain : {{ terrain.nameTerrain  }}</h1>
+    <form method="POST" action="/reserver/{{ terrain.idTerrain }}">
+    <div class="terrain" >
+        <img src="{{terrain.poster}}" alt="{{terrain.nameTerrain}}">
+        <p>Location: {{terrain.location}}</p>
+        <a href="{{terrain.position}}" target="_blank">Voir la position</a>
+        
+
+        <label for="date">Date :</label>
+      <input type="date" id="date" name="date" required>
+      
+      <label for="heure">Heure :</label>
+      <input type="time" id="heure" name="start" required>
+      <label for="heure">Heure :</label>
+      <input type="time" id="heure" name="end" required>
+
+
+        <button type="submit">Réserver</button>
+  
+      </div>
+    </form>
+</body>
+</html>

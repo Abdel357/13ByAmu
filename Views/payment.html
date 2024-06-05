@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paiement par carte</title>
+  <style>
+    /* Ajoutez votre CSS personnalisé ici */
+  </style>
+</head>
+<body>
+  <h1>Paiement par carte</h1>
+  
+  <form action="/payment/:idReservation" method="post">
+    
+    
+    <label for="cardNumber">Numéro de carte :</label>
+    <input type="text" id="cardNumber" name="cardNumber" required>
+
+    <label for="expiryDate">Date d'expiration :</label>
+    <input type="text" id="expiryDate" name="expiryDate" required>
+
+    <label for="cvv">CVV :</label>
+    <input type="text" id="cvv" name="cvv" required>
+
+    <button type="submit">Payer</button>
+  </form>
+</body>
+</html>
